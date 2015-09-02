@@ -2,17 +2,18 @@ var main = function() {
 	"use strict";
 	$("#search").click(function() {
 		// clear div
-		// $("#results").empty(); 
+	
 		var artist = $('input#query').val();
 		console.log("Artist Similar to ", artist);
 		search(artist);
 		$('input#query').val("");
-
+	
 	});
 }
 
 $(document).ready(main);
 var search = function(artist) {
+	$("#results .list-group").empty();
 	var url = "https://api.spotify.com/v1/search?q=" + artist + "&type=artist";
 	$.getJSON(url, function(artists) {
 		var id = artists.artists.items[0]['id'];
