@@ -1,11 +1,12 @@
 var main = function() {
 	"use strict";
 	$("#search").click(function() {
-		// clear div
-	
-		var artist = $('input#query').val();
-		console.log("Artist Similar to ", artist);
-		search(artist);
+		
+		var kindOfFood = $('input#query').val();
+		
+		
+		
+		food(kindOfFood);
 
 		$('input#query').val("");
 	
@@ -13,15 +14,26 @@ var main = function() {
 }
 
 $(document).ready(main);
-var search = function(artist) {
-	$("#results .list-group").empty();
-	var url = "https://api.spotify.com/v1/search?q=" + artist + "&type=artist";
-	$.getJSON(url, function(artists) {
-		var id = artists.artists.items[0]['id'];
-		getSimilarArtist(id);
+
+
+var food = function(kindOfFood){
+		$("#results .list-group").empty();
+var url = "http://api.pearson.com:80/kitchen-manager/v1/recipes?name-contains="+kindOfFood;
+	
+	$.getJSON(url, function(foods) {
+		for (var recipe in foods.results){
+			
+			//console.log(foods.results[recipe]['name']);
+			var $li = $("<li>");
+			$li.addClass("list-group-item");
+			$li.text(foods.results[recipe]['name']);
+
+			$li.hide();
+			$("#results .list-group").append($li);
+			$li.slideDown();
+		}
 	});
 }
-
 
 var getSimilarArtist = function(id) {
 	var url = "https://api.spotify.com/v1/artists/" + id + "/related-artists";
