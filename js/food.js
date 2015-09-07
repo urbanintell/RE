@@ -11,6 +11,8 @@ $(document).ready(main);
 
 
 var food = function(kindOfFood){
+
+	
 		$("#results .list-group").empty();
 var url = "http://api.pearson.com:80/kitchen-manager/v1/recipes?name-contains="+kindOfFood;
 	$.getJSON(url, function(foods) {
