@@ -1,14 +1,22 @@
 var main = function() {
 	"use strict";
+
+	$("input#query").on("keypress", function(event) {
+		if (event.keyCode === 13) {
+			var artist = $('input#query').val();
+			search(artist);
+
+			$('input#query').val("");
+
+		}
+	});
 	$("#search").click(function() {
 		// clear div
-	
 		var artist = $('input#query').val();
-		console.log("Artist Similar to ", artist);
 		search(artist);
 
 		$('input#query').val("");
-	
+
 	});
 }
 
@@ -42,4 +50,3 @@ var getSimilarArtist = function(id) {
 		}
 	});
 }
-
