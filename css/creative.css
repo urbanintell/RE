@@ -112,7 +112,7 @@ aside {
 
 .navbar-default .nav > li.active>a,
 .navbar-default .nav>li.active>a:focus {
-    color: #f05f40!important;
+    color: #000000!important;
     background-color: transparent;
 }
 
@@ -387,7 +387,7 @@ fieldset[disabled] .btn-default.active {
 .btn-primary {
     border-color: #f05f40;
     color: #fff;
-    background-color: #f05f40;
+    background-color: #000000;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;

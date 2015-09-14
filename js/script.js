@@ -1,6 +1,13 @@
 var main = function() {
 	"use strict";
 
+	var recognition = new webkitSpeechRecognition();
+	recognition.onresult = function(event) {
+		
+		console.log(event)
+	}
+	recognition.start();
+
 	$("input#query").on("keypress", function(event) {
 		if (event.keyCode === 13) {
 			var artist = $('input#query').val();
